@@ -31,15 +31,15 @@ Automated findings output for the audit can be found [here](https://github.com/c
 In order to determine the current price of USDY, the oracle contract `RWADynamicOracle.sol` is utilized. This contract allows for the price evolution of USDY over a fixed range to be stored on chain and referenced as needed, by the rUSDY contract.
 
 ### Background on USDY
-The USDY contract is an upgradeable (Transparent Upgradeable Proxy) with transfer restrictions. USDY is not required to abide by the same transfer restrictions as OUSG/OMMF. In order to hold, send and receive USDY. A user will need to add themselves to the [allowlist](contracts/usdy/allowlist/AllowlistUpgradeable.sol), not be present on the [blocklist](contracts/usdy/blocklist/Blocklist.sol), and not be on a [sanctionsList](https://etherscan.io/address/0x40C57923924B5c5c5455c48D93317139ADDaC8fb) 
+The USDY contract is an upgradeable (Transparent Upgradeable Proxy) with transfer restrictions. USDY is not required to abide by the same transfer restrictions as OUSG/OMMF. In order to hold, send and receive USDY. A user will need to add themselves to the [allowlist](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/usdy/allowlist/AllowlistUpgradeable.sol), not be present on the [blocklist](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/usdy/blocklist/Blocklist.sol), and not be on a [sanctionsList](https://etherscan.io/address/0x40C57923924B5c5c5455c48D93317139ADDaC8fb) 
 
 USDY represents tokenized bank deposits. Since deposits at US banks earn interest the redemption price of USDY appreciates as time progresses. Consequently the price of evolution of USDY over time will look like the graph below. Please note that as the yield on these bank deposits change, the slope of the line will also vary to reflect the updated yield. 
 
-![Alt text](<Screenshot 2023-08-28 at 3.34.06 PM.png>)
+![Alt text](https://github.com/code-423n4/2023-09-ondo/blob/main/screenshot.png)
 <br>
 [FIG-01]
 
-## [rUSDY](contracts/usdy/rUSDY.sol)
+## [rUSDY](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/usdy/rUSDY.sol)
 rUSDY is the rebasing variant of [USDY](https://etherscan.io/address/0x96F6eF951840721AdBF46Ac996b59E0235CB985C) token, and is heavily based on other rebasing tokens such as `stETH`. Users are able to acquire rUSDY tokens by calling the `wrap(uint256)` function on the contract. Where as the price of a single USDY token varies over time, the price of a single rUSDY token is fixed at a price of 1 Dollar, with yield being accrued in the form of additional rUSDY tokens. Similarly when a user wishes to convert their `rUSDY` to `USDY` they are able to call the `unwrap(uint256)` function, and receive their corresponding amount of `USDY`.
 
 In order to determine the USD value of the USDY locked in the contract, rUSDY will call into `RWADynamicRateOracle.sol` in order to fetch the current price.
@@ -47,8 +47,8 @@ In order to determine the USD value of the USDY locked in the contract, rUSDY wi
 
 Because `rUSDY` is the rebasing variant of `USDY` the same transfer restrictions for `USDY` will also be applied to the `rUSDY` token in the `beforeTransfer(address,address,uint256)` hook.
 
-## [RWADynamicRateOracle](contracts/rwaOracles/RWADynamicOracle.sol)
-The RWADynamcRateOracle contract is used to post price evolution for USDY on chain. This contract will accept a [`Range`](contracts/rwaOracles/RWADynamicOracle.sol#L295) as input from a trusted admin, and will apply the following conversion to the `lastSetPrice` for a given range:
+## [RWADynamicRateOracle](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/rwaOracles/RWADynamicOracle.sol)
+The RWADynamcRateOracle contract is used to post price evolution for USDY on chain. This contract will accept a [`Range`](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/rwaOracles/RWADynamicOracle.sol#L295) as input from a trusted admin, and will apply the following conversion to the `lastSetPrice` for a given range:
 
 ```
 currentPrice = (Range.dailyInterestRate ** (Days Elapsed + 1)) * Range.lastSetPrice
@@ -58,10 +58,10 @@ When plotted as a function of `block.timestamp`, the resulting plot should look 
 It is also important to note that when setting price's outside of the first range, the admin will only specify the `Range.end` and the `Range.dailyInterestRate` as the other parameters are calculated within the contract. 
 
 
-## [SourceBridge](contracts/bridge/SourceBridge.sol)
+## [SourceBridge](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/bridge/SourceBridge.sol)
 This contract is designed to handle calls into the Axelar Gateway for bridging USDY or an RWA token and is to be deployed on the source chain. The contract will burn the bridging token that it supports and foreward over gas along with a payload to the Axelar gas service and Axelar gateway respectively. You can reference the Axelar documentation for more info [*Axelar Docs*](https://docs.axelar.dev/dev/intro).
 
-## [DestinationBridge](contracts/bridge/DestinationBridge.sol)
+## [DestinationBridge](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/bridge/DestinationBridge.sol))
 This contract is designed to handle calls from the Axelar Gateway, and is to be deployed on the destination chain. `DestinationBridge.sol` requires that the address which originates the Axelar message passing is registered with the Receiver contract. Once the message has been received via the Axelar gateway it is queued and will be processed once it has the required number of approvals. The number of approvals corresponding to a transaction can vary based on the source chain and the amount being bridged.
 
 This contract also implements a rate limit that will set a ceiling for the amount of tokens which the Receiver contract can mint over some fixed duration of time. 
@@ -74,12 +74,12 @@ This contract also implements a rate limit that will set a ceiling for the amoun
 
 | Contract | SLOC | Purpose | Libraries used |  
 | ----------- | ----------- | ----------- | ----------- |
-| [contracts/bridge/Bridge.sol](contracts/bridge/SourceBridge.sol) | 89 | This contract serves as the source chain bridge for USDY | OZ Pausable & Ownable; Axelar Address Utils |
-| [contracts/bridge/Receiver.sol](contacts/bridge/DestinationBridge.sol) | 225 | This contract serves as the destination chain bridge for USDY | OZ Pausable & Ownable; Axelar Executable and String Utils |
-| [contracts/usdy/rUSDY.sol](contracts/usdy/rUSDY.sol) | 317 | The rebasing USDY token contract | OZ Upgradeable Contracts |
-| [contracts/usdy/rUSDYFactory.sol](contracts/usdy/rUSDYFactory.sol) | 76 | The rUSDY deployment contract | OZ Proxy | 
-| [contracts/rwaOracles/RWADynamicOracle.sol](contracts/rwaOracles/RWADynamicOracle.sol) | 251 |  This contract is the reference oracle used by rUSDY to get the price of USDY | OZ Access Control & Pausable |
-| [contracts/rwaOracles/IRWADynamicOracle.sol](contracts/rwaOracles/RWADynamicOracle.sol) | 4 | Interfaces for IRWADynamicOracle | N/A |
+| [contracts/bridge/SourceBridge.sol](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/bridge/SourceBridge.sol) | 89 | This contract serves as the source chain bridge for USDY | OZ Pausable & Ownable; Axelar Address Utils |
+| [contracts/bridge/DestinationBridge.sol](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/bridge/DestinationBridge.sol) | 225 | This contract serves as the destination chain bridge for USDY | OZ Pausable & Ownable; Axelar Executable and String Utils |
+| [contracts/usdy/rUSDY.sol](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/usdy/rUSDY.sol) | 317 | The rebasing USDY token contract | OZ Upgradeable Contracts |
+| [contracts/usdy/rUSDYFactory.sol](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/usdy/rUSDYFactory.sol) | 76 | The rUSDY deployment contract | OZ Proxy | 
+| [contracts/rwaOracles/RWADynamicOracle.sol](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/rwaOracles/RWADynamicOracle.sol) | 251 |  This contract is the reference oracle used by rUSDY to get the price of USDY | OZ Access Control & Pausable |
+| [contracts/rwaOracles/IRWADynamicOracle.sol](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/rwaOracles/IRWADynamicOracle.sol) | 4 | Interfaces for IRWADynamicOracle | N/A |
 
 ## Out of scope
 - Any imported Axelar library.
