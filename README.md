@@ -11,12 +11,12 @@
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2023-09-ondo-finance/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
-- Starts September 01, 2023 20:00 UTC (ex. `Starts March 22, 2023 20:00 UTC`)
-- Ends September 07, 2023 20:00 UTC (ex. `Ends March 30, 2023 20:00 UTC`)
+- Starts September 01, 2023 20:00 UTC
+- Ends September 07, 2023 20:00 UTC 
 
 ## Automated Findings / Publicly Known Issues
 
-Automated findings output for the audit can be found [here](bot-report.md) within 24 hours of audit opening.
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-09-ondo-finance/blob/main/bot-report.md) within 24 hours of audit opening.
 
 *Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
 
