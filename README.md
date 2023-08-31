@@ -17,7 +17,7 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 ## 🐺 C4: Set up repos
 - [ ] Create a new private repo named `YYYY-MM-sponsorname` using this repo as a template.
 - [ ] Rename this repo to reflect audit date (if applicable)
-- [ ] Rename auditt H1 below
+- [ ] Rename audit H1 below
 - [ ] Update pot sizes
 - [ ] Fill in start and end times in audit bullets below
 - [ ] Add link to submission form in audit details below
@@ -89,7 +89,47 @@ Automated findings output for the audit can be found [here](bot-report.md) withi
 
 # Overview
 
-*Please provide some context about the code being audited, and identify any areas of specific concern in reviewing the code. (This is a good place to link to your docs, if you have them.)*
+
+# Introduction to rUSDY 
+`rUSDY` Is an interest bearing stablecoin, and can be thought of as a rebasing variant of  Ondo's USDY (Ondo U.S. Dollar Yield) token. Individuals who hold USDY are able to wrap their USDY tokens and receive an amount of rUSDY tokens proportional to the USD value wrapped. Each rUSDY token is worth 1 dollar, as USDY accrues value (appreciates in price) rUSDY will rebase accordingly.
+
+In order to determine the current price of USDY, the oracle contract `RWADynamicOracle.sol` is utilized. This contract allows for the price evolution of USDY over a fixed range to be stored on chain and referenced as needed, by the rUSDY contract.
+
+### Background on USDY
+The USDY contract is an upgradeable (Transparent Upgradeable Proxy) with transfer restrictions. USDY is not required to abide by the same transfer restrictions as OUSG/OMMF. In order to hold, send and receive USDY. A user will need to add themselves to the [allowlist](contracts/usdy/allowlist/AllowlistUpgradeable.sol), not be present on the [blocklist](contracts/usdy/blocklist/Blocklist.sol), and not be on a [sanctionsList](https://etherscan.io/address/0x40C57923924B5c5c5455c48D93317139ADDaC8fb) 
+
+USDY represents tokenized bank deposits. Since deposits at US banks earn interest the redemption price of USDY appreciates as time progresses. Consequently the price of evolution of USDY over time will look like the graph below. Please note that as the yield on these bank deposits change, the slope of the line will also vary to reflect the updated yield. 
+
+![Alt text](<Screenshot 2023-08-28 at 3.34.06 PM.png>)
+<br>
+[FIG-01]
+
+## [rUSDY](contracts/usdy/rUSDY.sol)
+rUSDY is the rebasing variant of [USDY](https://etherscan.io/address/0x96F6eF951840721AdBF46Ac996b59E0235CB985C) token, and is heavily based on other rebasing tokens such as `stETH`. Users are able to acquire rUSDY tokens by calling the `wrap(uint256)` function on the contract. Where as the price of a single USDY token varies over time, the price of a single rUSDY token is fixed at a price of 1 Dollar, with yield being accrued in the form of additional rUSDY tokens. Similarly when a user wishes to convert their `rUSDY` to `USDY` they are able to call the `unwrap(uint256)` function, and receive their corresponding amount of `USDY`.
+
+In order to determine the USD value of the USDY locked in the contract, rUSDY will call into `RWADynamicRateOracle.sol` in order to fetch the current price.
+
+
+Because `rUSDY` is the rebasing variant of `USDY` the same transfer restrictions for `USDY` will also be applied to the `rUSDY` token in the `beforeTransfer(address,address,uint256)` hook.
+
+## [RWADynamicRateOracle](contracts/rwaOracles/RWADynamicOracle.sol)
+The RWADynamcRateOracle contract is used to post price evolution for USDY on chain. This contract will accept a [`Range`](contracts/rwaOracles/RWADynamicOracle.sol#L295) as input from a trusted admin, and will apply the following conversion to the `lastSetPrice` for a given range:
+
+```
+currentPrice = (Range.dailyInterestRate ** (Days Elapsed + 1)) * Range.lastSetPrice
+```
+When plotted as a function of `block.timestamp`, the resulting plot should look identical to that of [FIG-01](#usdy). There is also functionality within the contract that if a range has elapsed and there is no subsequent range set, the oracle will return the maximum price of the previous range for all `block.timestamp` > `Range.end`
+
+It is also important to note that when setting price's outside of the first range, the admin will only specify the `Range.end` and the `Range.dailyInterestRate` as the other parameters are calculated within the contract. 
+
+
+## [SourceBridge](contracts/bridge/SourceBridge.sol)
+This contract is designed to handle calls into the Axelar Gateway for bridging USDY or an RWA token and is to be deployed on the source chain. The contract will burn the bridging token that it supports and foreward over gas along with a payload to the Axelar gas service and Axelar gateway respectively. You can reference the Axelar documentation for more info [*Axelar Docs*](https://docs.axelar.dev/dev/intro).
+
+## [DestinationBridge](contracts/bridge/DestinationBridge.sol)
+This contract is designed to handle calls from the Axelar Gateway, and is to be deployed on the destination chain. `DestinationBridge.sol` requires that the address which originates the Axelar message passing is registered with the Receiver contract. Once the message has been received via the Axelar gateway it is queued and will be processed once it has the required number of approvals. The number of approvals corresponding to a transaction can vary based on the source chain and the amount being bridged.
+
+This contract also implements a rate limit that will set a ceiling for the amount of tokens which the Receiver contract can mint over some fixed duration of time. 
 
 # Scope
 
@@ -99,28 +139,26 @@ Automated findings output for the audit can be found [here](bot-report.md) withi
 
 | Contract | SLOC | Purpose | Libraries used |  
 | ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/sample.sol](contracts/folder/sample.sol) | 123 | This contract does XYZ | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
+| [contracts/bridge/Bridge.sol](contracts/bridge/SourceBridge.sol) | 89 | This contract serves as the source chain bridge for USDY | OZ Pausable & Ownable; Axelar Address Utils |
+| [contracts/bridge/Receiver.sol](contacts/bridge/DestinationBridge.sol) | 225 | This contract serves as the destination chain bridge for USDY | OZ Pausable & Ownable; Axelar Executable and String Utils |
+| [contracts/usdy/rUSDY.sol](contracts/usdy/rUSDY.sol) | 317 | The rebasing USDY token contract | OZ Upgradeable Contracts |
+| [contracts/usdy/rUSDYFactory.sol](contracts/usdy/rUSDYFactory.sol) | 76 | The rUSDY deployment contract | OZ Proxy | 
+| [contracts/rwaOracles/RWADynamicOracle.sol](contracts/rwaOracles/RWADynamicOracle.sol) | 251 |  This contract is the reference oracle used by rUSDY to get the price of USDY | OZ Access Control & Pausable |
+| [contracts/rwaOracles/IRWADynamicOracle.sol](contracts/rwaOracles/RWADynamicOracle.sol) | 4 | Interfaces for IRWADynamicOracle | N/A |
 
 ## Out of scope
+- Any imported Axelar library.
 
-*List any files/contracts that are out of scope for this audit.*
-
-# Additional Context
-
-*Describe any novel or unique curve logic or mathematical models implemented in the contracts*
-
-*Sponsor, please confirm/edit the information below.*
-
-## Scoping Details 
+# Scoping Details 
 ```
 - If you have a public code repo, please share it here:  
 - How many contracts are in scope?:   6
-- Total SLoC for these contracts?:  750
+- Total SLoC for these contracts?:  965
 - How many external imports are there?: 2  
 - How many separate interfaces and struct definitions are there for the contracts within scope?:  6
 - Does most of your code generally use composition or inheritance?:   Inheritance
 - How many external calls?:   1
-- What is the overall line coverage percentage provided by your tests?: 90&
+- What is the overall line coverage percentage provided by your tests?: ~80%
 - Is this an upgrade of an existing system?: False
 - Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): Multi-Chain, ERC-20 Token, Uses L2
 - Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?:   False
@@ -132,8 +170,68 @@ Automated findings output for the audit can be found [here](bot-report.md) withi
 - Describe any specific areas you would like addressed: Please try to mint infinitely many tokens of RUSDY with little or no USDY, or break the brdieg contracts by not sending but recieiving tokens on the other side
 ```
 
-# Tests
+# Not In Scope
 
-*Provide every step required to build the project from a fresh git clone, as well as steps to run the tests with a gas report.* 
+- **Centralization Risk** - we are aware that our management functions and contract upgradeability results in a significantly more centralized system than Compound V2.
+- **Sanction related edge cases** specifically when a user’s `isAllowed` status or Sanction status changes in between different actions, leaving them at risk of their funds being locked
+    - If someone gets sanctioned their funds are locked
+    - If someone gets added to the blocklist their funds are locked
+- **Malicous Admin/Operator** - we are aware that if an admin/operator has the ability to call various unrestrained setters, this is intentional. We are also aware that if these setters are used incorrectly the contracts may function incorrectly. Specifically through using the `overrideRange` function ranges may be updated s.t. the ranges may not be contiguous. 
+- **Misc Items**
+    - We are aware that pausing the `RWADynamicOracle` will result in the price not being returned in the `rUSDY` contract
+    - In `RWADynamicOracle`, the operator will not add more than 2 ranges passed the current range. Hence, out of gas loop iteration is out of scope
+    - We are not interested in DOS attacks resulting from the MintLimits.
+    - We assume that all arrays which an admin sets will not be set so large that the loop results in an `out of gas error`
+    - We are aware that if a range is updated the prevRangeClosePrice for subsequent set ranges will be stale.
+- *Note: Invalid state paths will be weighed more heavily if they are publically accessible versus if they are only accessible via a permissioned address*
 
-*Note: Many wardens run Slither as a first pass for testing.  Please document any known errors with no workaround.* 
+# Testing and Development
+
+## Setup
+- Install Node >= 16
+- Run `yarn install`
+- Install forge
+- Copy `.env.example` to a new file `.env` in the root directory of the repo. Keep `FORK_FROM_BLOCK_NUMBER` value the same. Fill in a dummy menmonic and add an RPC URL to populate `MAINNET_RPC_URL`
+- Run `yarn init-repo`
+
+## Commands
+
+- Run Tests: `yarn test-forge`
+
+- Generate Gas Report: `yarn test-forge --gas-report`
+
+## Writing Tests and Forge Scripts
+
+For testing with Foundry, `forge-tests/USDY_BasicDeployment.sol` was added to allow for users to easily deploy and setup the USDY dapp.
+
+To setup and write tests for contracts within foundry from a deployed state please include the following layout within your testing file. Helper functions are provided within each of these respective setup files.
+```sh
+pragma solidity 0.8.16;
+
+import "forge-tests/USDY_BasicDeployment.sol";
+
+contract Test_case_someDescription is USDY_BasicDeployment {
+  function testName() public {
+    console.log(rUSDYToken.name());
+    console.log(rUSDYToken.symbol());
+  }
+}
+```
+*Note*:
+- Within the foundry tests `address(this)` may be given certain permissioned roles. Please use a freshly generated address when writing POC's related to bypassing access controls.
+
+## VS Code
+
+CTRL+Click in Vs Code may not work due to usage of relative and absolute import paths. 
+
+## Slither
+
+If you feel inclined to run [slither](https://github.com/crytic/slither), the following command will run it on the entire repository. 
+
+```
+slither <Relative Path of Contract> --foundry-out-directory artifactsforge
+```
+eg 
+```
+slither contracts/bridge/Receiver.sol --foundry-out-directory artifactsforge
+```
