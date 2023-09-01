@@ -33,8 +33,8 @@ The USDY contract is an upgradeable (Transparent Upgradeable Proxy) with transfe
 
 USDY represents tokenized bank deposits. Since deposits at US banks earn interest the redemption price of USDY appreciates as time progresses. Consequently the price of evolution of USDY over time will look like the graph below. Please note that as the yield on these bank deposits change, the slope of the line will also vary to reflect the updated yield. 
 
-![Alt text](https://github.com/code-423n4/2023-09-ondo/blob/main/screenshot.png)
-<br>
+![Alt text](https://github.com/code-423n4/2023-09-ondo/blob/main/screenshot.png?raw=true)
+
 [FIG-01]
 
 ## [rUSDY](https://github.com/code-423n4/2023-09-ondo/blob/main/contracts/usdy/rUSDY.sol)
