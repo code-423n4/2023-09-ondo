@@ -1,0 +1,2414 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q3-2023 / ondo-sep01
+==============================================================
+
+[08/29/2023 18:47] kartoonjoy (pinned)
+👋 Hello and welcome to the audit channel for the $36,500 USDC **Ondo Finance** audit!
+
+📆 Audit opens 09/01/2023 20:00 (20:00 UTC) and runs through 09/07/2023 20:00 (20:00 UTC) (6 days).
+
+Please give a warm welcome to the Ondo Finance team, particularly @ypatil12, @ali2251, @Cameron Clifton and @tom2o17 🌊, who will be available for questions either here in the channel or via DM in the EST/PST timezone(s).
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/contests/2023-09-ondo-finance#top
+
+{Embed}
+https://code4rena.com/contests/2023-09-ondo-finance
+Code4rena
+Code4rena is a competitive audit platform that finds more high-severity vulnerabilities, more quickly than any other auditing method.
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/c4-og-banner-6764C.png
+
+{Reactions}
+10_10 
+
+[08/29/2023 18:47] kartoonjoy
+Pinned a message.
+
+
+[08/31/2023 20:56] tutkata#1721
+Looking forward!
+
+{Reactions}
+hi5 (4) 
+
+[09/01/2023 20:04] b353n
+https://code4rena.com/contests/2023-09-ondo-finance#top
+
+{Embed}
+https://code4rena.com/contests/2023-09-ondo-finance
+Code4rena
+Code4rena is a competitive audit platform that finds more high-severity vulnerabilities, more quickly than any other auditing method.
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/c4-og-banner-7DE3A.png
+
+
+[09/01/2023 20:04] b353n
+graph here doesn't show
+
+
+[09/01/2023 20:05] itsmetechjay
+It shows in the github repo - we'll work on edits to the audit page.
+
+{Reactions}
+🚀 
+
+[09/01/2023 20:11] itsmetechjay
+should be working now!
+
+{Reactions}
+🔥 
+
+[09/01/2023 20:12] b353n
+you are fast. Nice work guys , thank you
+
+{Reactions}
+🎉 
+
+[09/01/2023 20:46] b353n
+Anyone from team is here ?
+
+
+[09/01/2023 22:13] yash99
+👋🏾
+
+
+[09/01/2023 23:16] 0xhelium
+Does the oracle return a 10 decimals Price or 15 decimals Price ?
+
+
+[09/02/2023 00:02] tom2o17
+18 decimal price 
+a price of 1$ is represented as 1e18
+
+
+[09/02/2023 04:31] 0xstalin
+Hello @tom2o17 🌊 @ypatil12 @Cameron Clifton @ali2251 
+quick question, can you list the chains where the contracts will be deployed to?👀
+
+
+[09/02/2023 05:08] Message Wolf#0225 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Automated findings output for the audit can be found [here](https://gist.github.com/code423n4/02bca95d3f7a0c8d75b7d8aa41ce7f7c).
+
+*Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
+
+{Reactions}
+🤖 (3) 
+
+[09/02/2023 06:23] plamkata
+Why has the protocol team opted out from using traditional oracles and instead implement their own? Out of curiousity
+
+
+[09/02/2023 06:47] 0xstalin
+Has anybody else had issues when installing the packages running yarn install?
+I'm having this weird error 😦
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-1C619.png
+
+
+[09/02/2023 06:54] inallhonesty_
+I've managed to go over the yarn install, but got stuck here
+
+
+[09/02/2023 06:54] inallhonesty_
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-AE99B.png
+
+
+[09/02/2023 07:07] 0xstalin
+How did you fix the yarn install issue?
+
+
+[09/02/2023 07:07] inallhonesty_
+I didn't encounter it, I pasted and it worked
+
+
+[09/02/2023 07:08] 0xstalin
+Aaah, can you share what yarn versión are you using? I’m probably using an old version, haven’t updated in a while
+
+
+[09/02/2023 07:09] inallhonesty_
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-57F3D.png
+
+{Reactions}
+🧐 
+
+[09/02/2023 07:17] bean.eth2
+```We are aware that if a range is updated the prevRangeClosePrice for subsequent set ranges will be stale.``` does that mean; when the histroy of the preRangeClosePrice at X is updated/overrided; the X+1 and following prevRangeClosePrice would then be inconsistent, and this is acceptable?
+
+
+[09/02/2023 07:30] 0xstalin
+I have the same yarn version, interesting, thanks for sharing, will try to find out what's wrong
+
+
+[09/02/2023 08:21] benrai
+Does anyone else get this error when running yarn test-forge?
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-0187A.png
+
+
+[09/02/2023 08:49] b353n
+just forge build guys
+
+
+[09/02/2023 10:11] benrai
+forge build gives me the same error
+
+
+[09/02/2023 10:11] b353n
+For me is work just fine
+
+
+[09/02/2023 10:11] b353n
+try foundryup
+
+
+[09/02/2023 10:11] b353n
+and then forge build
+
+
+[09/02/2023 10:18] benrai
+Same thing. What version of foundry do you use? I am using `forge 0.2.0`
+
+
+[09/02/2023 10:19] b353n
+```
+@MacBook-Air 2023-09-ondo % forge --version
+forge 0.2.0 (577dae3 2023-09-01T00:41:50.439385000Z)
+```
+
+
+[09/02/2023 10:20] catscanaudit
+make sure you're cd'd in the correct folder
+
+
+[09/02/2023 11:28] plamkata
+So since USDY's price is set pretty much manually, there is no possibility for a depeg, since it defines it's own price to the dollar based on APY ?
+
+
+[09/02/2023 11:34] 0xhelium
+Thanks . will the shares mapping return the exact share without decimals or it's also in 18 decimals ?
+
+
+[09/02/2023 11:56] thebrittfactor
+Pinned a message.
+
+{Reactions}
+hi5 
+
+[09/02/2023 12:20] plamkata
+Anyone else unable to run the tests? This error is coming from the helper file that is supposed to make tests easier to write :chefskiss:
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-2CC20.png
+
+
+[09/02/2023 12:34] anmol.eth
+I'm really confused about how this oracle works. At what interval does the setter need to set the the range?
+
+
+[09/02/2023 12:45] plamkata
+It's really just trust-based. The admin is expected to update the interest rate each time the previous interval ends. If he does not, the latest price would be returned, which could be stale, but from my understanding of the protocol that is not possible
+
+{Reactions}
+👍🏾 
+
+[09/02/2023 12:53] benrai
+I am in the main folder (2023-09-ondo) so this should be correct, right?
+
+
+[09/02/2023 12:54] catscanaudit
+Yeah
+
+
+[09/02/2023 12:54] catscanaudit
+it does successfully build it for me there
+
+
+[09/02/2023 13:08] 0xpanicerror
+Hey guys, the figure provided in README is a linear graph. Does the mean USDY does not acquire interest in a compounded fashion?
+
+
+[09/02/2023 13:13] deth2814
+same
+
+
+[09/02/2023 13:29] benrai
+What assets is the bridge supposed to be used for? For USDY or rUSDY? Also why should it be necessary to bridge the assets, does anyone know?
+
+
+[09/02/2023 13:35] plamkata
+Any RWA tokens, like USDY and rUSDY and it would be if you want to send some of your tokens to other chains to use them there, for e.g you want to use the lower gas fees on Polygon so you bridge your assets there
+
+{Reactions}
+👍 (4) 
+
+[09/02/2023 14:30] yash99
+Started a thread.
+
+
+[09/02/2023 14:30] yash99
+Started a thread.
+
+
+[09/02/2023 14:31] yash99
+Started a thread.
+
+
+[09/02/2023 14:31] yash99
+Started a thread.
+
+
+[09/02/2023 14:32] yash99
+Started a thread.
+
+
+[09/02/2023 14:35] yash99
+Started a thread.
+
+
+[09/02/2023 14:40] deth2814
+@ypatil12 Shot a DM
+
+
+[09/02/2023 14:47] orbitalautodev
+One thing I appreciate about this project is that it's easy to understand what you're trying to accomplish. Not always the case.
+
+{Reactions}
+10_10 
+
+[09/02/2023 14:48] orbitalautodev
+First hurdle cleared.
+
+
+[09/02/2023 14:48] 0xkazimm
+as we have more than one team sponsors i prefer to create a group in Dm so any sponser is at the timezone can answer, is that work fine for you sponsors ? @ypatil12 @ali2251 @Cameron Clifton  @tom2o17 🌊  ?
+
+
+[09/02/2023 14:53] tom2o17
+R u using the yarn test-forge cmd
+
+Or is this the output from forge test
+
+
+[09/02/2023 15:01] tom2o17
+Bridge is for the USDY token
+
+{Reactions}
+‼️ 
+
+[09/02/2023 15:04] tom2o17
+Shares has no concept of decimals although 1 Wei of USDY is equivalent to 10_000 rUSDY shares
+
+
+[09/02/2023 15:04] plamkata
+Forge test
+
+
+[09/02/2023 15:05] tom2o17
+Plz use 
+
+
+yarn test-forge —match-…..
+
+
+Setup file is dependent on fork
+
+{Reactions}
+🚀 (2) 
+
+[09/02/2023 15:10] yash99
+Started a thread.
+
+
+[09/02/2023 15:46] 0xstalin
+had to start a fresh clone and now is working fine, weeeird 🧐
+
+
+[09/02/2023 16:09] todorc137
+hey! I am also facing the same problem. Anyone having idea what might be the issue here?
+
+
+[09/02/2023 16:16] 0xstalin
+I’m running tests as @tom2o17 🌊  suggested in his last message. Don’t forget to rename the .env.developers file to .env , and add the keys of your alchemy account in that file
+
+{Reactions}
+10_10 👍 
+
+[09/02/2023 16:25] pabloeksdi
+What else did u do that could have fixed it?
+
+
+[09/02/2023 16:40] 0xstalin
+I cloned the repo again, ran the `yarn install`, ran `foundryup`, ran `forge install`, updated the .env file, and ran the tests using `yarn test-forge`
+
+
+[09/02/2023 16:42] pabloeksdi
+yarn install is still giving me an "Invalid URL" error.. I'll figure it out, thanks
+
+
+[09/02/2023 16:42] plamkata
+you are using yarn on WSL right?
+
+{Reactions}
+✅ (2) 
+
+[09/02/2023 16:42] 0xstalin
+oh, I did install node 16, I was first trying with node 18, I don't know if that made any difference
+
+
+[09/02/2023 16:43] pabloeksdi
+gonna try it out
+
+
+[09/02/2023 16:50] plamkata
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-88D47.png
+
+
+[09/02/2023 16:50] plamkata
+I am here for some reason
+
+
+[09/02/2023 16:52] pabloeksdi
+I ran into the same error, you should run ```sudo apt remove cmdtest``` and run ```curl -o- -L https://yarnpkg.com/install.sh | bash```
+
+
+[09/02/2023 16:53] pabloeksdi
+didn't fix it fully but it made some progress lol
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-596BC.png
+
+
+[09/02/2023 17:04] plamkata
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-DE17C.png
+
+
+[09/02/2023 17:04] plamkata
+Yall could have just used regular forge
+
+
+[09/02/2023 17:05] tom2o17
+You can also potentially bypass node by just running (if node is being a pain)
+
+forge test --fork-url $(grep -w MAINNET_RPC_URL .env | cut -d '=' -f2) --fork-block-number $(grep -w FORK_FROM_BLOCK_NUMBER_MAINNET .env | cut -d '=' -f2) --nmc Test_Prod
+
+
+[09/02/2023 17:05] pabloeksdi
+Look at the discussion above, I am running through the same issue
+
+
+[09/02/2023 17:10] plamkata
+For the rpc url what do I set
+
+
+[09/02/2023 17:10] plamkata
+Is sepolia  fine?
+
+
+[09/02/2023 17:10] tom2o17
+No needs to be mainnet
+
+
+[09/02/2023 17:11] tom2o17
+And set it in the env which is being grep ‘ed
+
+
+[09/02/2023 19:18] 0xkazimm
+can i know on which chain we deploy the scope contracts please ?
+
+
+[09/02/2023 20:35] tom2o17
+Evm chains w/ compatible block.timestamp invocations
+
+{Reactions}
+❤️ 
+
+[09/03/2023 00:06] ivand5690
+any reason why forge-tests/rusdy/rUSDY_dynamic.t.sol doesn't compile?
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/Screenshot_2023-09-03_at_02.05.24-AE0FF.png
+
+
+[09/03/2023 00:14] 0xstalin
+You need to run tests using a fork
+
+{Reactions}
+✅ (2) 
+
+[09/03/2023 00:16] ivand5690
+got it, thank you
+
+
+[09/03/2023 05:31] hisoul22
+@ypatil12  shot a DM
+
+
+[09/03/2023 06:12] 0xnirlin
+I read the mint limits and my brain goes `DossSs`
+
+and than i read this;
+
+```We are not interested in DOS attacks resulting from the MintLimits.```
+
+
+[09/03/2023 06:12] 0xnirlin
+Why:thisisfine:
+
+
+[09/03/2023 06:18] 0xnirlin
+sorry  if been asked before but I am getting this error:
+
+
+[09/03/2023 06:18] 0xnirlin
+error An unexpected error occurred: "Invalid URL".
+info If you think this is a bug, please open a bug report with the information provided in "/home/nirlin/audits/c4/2023-09-ondo/yarn-error.log".
+info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
+
+{Embed}
+https://yarnpkg.com/en/docs/cli/install
+Yarn
+Fast, reliable, and secure dependency management.
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/og_image-46462.png
+
+
+[09/03/2023 06:20] 0xnirlin
+oo thank you.
+
+{Reactions}
+🫡 
+
+[09/03/2023 06:37] 0xnirlin
+How to generate the coverage report?
+
+
+[09/03/2023 06:38] plamkata
+forge coverage
+
+
+[09/03/2023 06:38] plamkata
+Is what I use, idk how to do it with yarn
+
+
+[09/03/2023 06:45] 0xnirlin
+did it, running from last 10 minutes
+
+{Reactions}
+😳 
+
+[09/03/2023 07:11] baice8614
+https://github.com/nodejs/node/issues/48855  
+I also cannot use yarn to install this project,  then I found this issue
+
+{Embed}
+https://github.com/nodejs/node/issues/48855
+yarn 1.x.x invalid url with node 18.17.0 VS 18.16.1 · Issue #48855 ...
+Version 18.17.0 Platform Mac OS (aarm64 & intel) Subsystem No response What steps will reproduce the bug? Using node 18.17.0 and installing yarn 1.x.x will cause this error. How often does it r...
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/48855-124DD
+
+
+[09/03/2023 07:26] baice8614
+I changed my node version from v18.17.1 to v18.14.0, and slove this problem
+
+{Reactions}
+10_10 (2) 
+
+[09/03/2023 07:52] benrai
+USDY is already live, right? Does anyone know on what chain it is?
+
+
+[09/03/2023 08:00] plamkata
+@tom2o17 🌊 from what I understand, every chain that will be compatible should have a Source and Destination contracts right? To be able to send tokens from any chain and receive them to any chain.
+
+
+[09/03/2023 08:05] baice8614
+https://docs.ondo.finance/addresses#usdy  
+@BenRai   usdy is on ethereum 
+https://etherscan.io/address/0x96F6eF951840721AdBF46Ac996b59E0235CB985C#code
+
+{Embed}
+https://etherscan.io/address/0x96F6eF951840721AdBF46Ac996b59E0235CB985C
+TokenProxy | Address 0x96F6eF951840721AdBF46Ac996b59E0235CB985C | E...
+The Contract Address 0x96F6eF951840721AdBF46Ac996b59E0235CB985C page allows users to view the source code, transactions, balances, and analytics for the contract address. Users can also interact and make transactions to the contract directly on Etherscan.
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/etherscan-logo-circle-A29B1.jpg
+
+{Embed}
+https://docs.ondo.finance/addresses
+Smart Contract Addresses | Ondo Finance Docs
+OUSG
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/ondo-wordmark-hero-card-44A2F.png
+
+
+[09/03/2023 08:18] benrai
+Thanks for the info! I googled it and ended up with a contract on binance smartchain
+
+
+[09/03/2023 08:22] 0xnirlin
+Which sponser is availible to answer questions?
+
+
+[09/03/2023 08:56] 0xnirlin
+usdy allowlist is separate contract?
+
+
+[09/03/2023 10:50] benrai
+How does your covarage report look like? Mine looks quite empty for the relevant files. Is this the same for you? (I used `forge coverage`, screenshot is from excel)
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-65488.png
+
+
+[09/03/2023 10:52] benrai
+Does anyone know what the factory is for? Normaly factories are used to deploy similar contracts, right? But why is there a need to deploy multiple rUSDY contracts on the same chain?
+
+
+[09/03/2023 12:53] 0xkazimm
+how users can get USDY on ondo protocol ? or is it listed on exchanges ? like usdc and usdt ?
+
+
+[09/03/2023 13:22] 0xkazimm
+and when we wrap usdy to get rUSDY, did this rUSDY accrue yield by holding it ?!
+
+
+[09/03/2023 14:08] jnrlouis
+From the docs
+> Individuals who hold USDY are able to wrap their USDY tokens and receive an amount of rUSDY tokens proportional to the USD value wrapped. Each rUSDY token is worth 1 dollar, as USDY accrues value (appreciates in price) rUSDY will rebase accordingly.
+
+{Reactions}
+❤️ 
+
+[09/03/2023 14:16] castle_chain
+will the source and destination bridges , and USDY token be deplyed on each chain supproted ? 
+in other words , will there be a instance for each contract on each network ??
+
+
+[09/03/2023 14:31] 0xnirlin
+it is rebasing token. So suppose you wrapped 100 usdy and each is worth 1$, so you will get 100rusdy.
+
+But if 1 usdy becomes equal to 1.1usd, yours rusdy supply will increase but 1rusdy will always be 1$
+
+{Reactions}
+❤️ (2) 
+
+[09/03/2023 14:31] 0xnirlin
+so usdy is not pegged but rusdy is pegged to 1$
+
+
+[09/03/2023 14:32] anmol.eth
+How does the rebasing happens.  I'm actually not sure how the rebasing mechanism works.
+
+
+[09/03/2023 14:33] anmol.eth
+@nirlin can you please explain
+
+
+[09/03/2023 15:22] 0xkazimm
+Thanks bro it’s clear now
+
+
+[09/03/2023 15:23] 0xkazimm
+True thanks
+
+
+[09/03/2023 15:26] tom2o17
+Correct you can assume we make all bridges multa - directional
+
+
+[09/03/2023 15:27] tom2o17
+U need to go through the usdy Cash manager which can be thought of as out of scope for this audit 
+
+If you are interested there should be test coverage for this in the repo so u can get a general idea of the flow
+
+
+[09/03/2023 15:28] tom2o17
+Oracle changes price daily look into the balanceOf function on rUSDY contract and that should give u an idea of the rebasing mechanism
+
+
+[09/03/2023 15:41] degensec
+@tom2o17 🌊 Which chains should we consider for the bridge destinations? Any non-EVM networks?
+
+
+[09/03/2023 16:06] 0xblackskull
+can anyone tell me how to resolve this issue?
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-EA95A.png
+
+
+[09/03/2023 16:11] pabloeksdi
+https://discord.com/channels/810916927919620096/1145752078334042203/1147547829749956758
+
+{Reactions}
+chefskiss 
+
+[09/03/2023 16:36] tom2o17
+No only evm networks
+
+
+[09/03/2023 16:49] 0xhals
+Hi @tom2o17 🌊 ,,sent you a DM,,
+
+{Reactions}
+10_10 
+
+[09/03/2023 17:02] 0xnirlin
+you can check videos on stETH. But a simple description is that if the price of usdy in increased, more supply of rUSdY is increased to keep the peg at dollar and of the price decrease for usdY supply for rUSDY is also decrease. It is admin controlled.
+
+{Reactions}
+🫡 
+
+[09/03/2023 17:13] castle_chain
+??
+
+
+[09/03/2023 17:14] castle_chain
+what does this code snippet do ?? 
+https://github.com/code-423n4/2023-09-ondo/blob/47d34d6d4a5303af5f46e907ac2292e6a7745f6c/contracts/bridge/DestinationBridge.sol#L342-L348
+
+{Embed}
+https://github.com/code-423n4/2023-09-ondo/blob/47d34d6d4a5303af5f46e907ac2292e6a7745f6c/contracts/bridge/DestinationBridge.sol
+2023-09-ondo/contracts/bridge/DestinationBridge.sol at 47d34d6d4a53...
+Contribute to code-423n4/2023-09-ondo development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/bc384b88-7513-430f-aaf0-012648e912af-5A909
+
+
+[09/03/2023 17:14] castle_chain
+@nirlin
+
+
+[09/03/2023 17:38] 0xnirlin
+allowlist is separate contract, not in scope
+
+
+[09/03/2023 17:49] castle_chain
+but this code in the scope , can you tell me a small info about what does it do ? 
+does this check if the sender is allowed , and is the sender is not allowed , it will put him in the allowList ?
+
+
+[09/03/2023 18:07] tom2o17
+You can think about the allowlist as a registry that anyone can add themselves to. It is not in scope for the audit. 
+
+You just have to add yourself to it prior to sending and receiving usdy/rusdy
+
+
+[09/03/2023 22:45] tom2o17
+Factory is for deploying the transparent upgradable proxy for rUSDY
+
+{Reactions}
+👍 
+
+[09/04/2023 04:06] anmol.eth
+Why BURNER have ability to burn tokens from any account?
+
+
+[09/04/2023 05:32] b353n
+Nope this is do it by _burnShares function
+
+
+[09/04/2023 05:32] b353n
+not by burn
+
+
+[09/04/2023 05:32] b353n
+I think he talk for this function
+```
+function burn(address _account, uint256 _amount) external onlyRole(BURNER_ROLE) {
+```
+
+
+[09/04/2023 05:40] anmol.eth
+So BURNER can burn anyone's share and get the underlying USDY?
+
+
+[09/04/2023 05:41] kaveyjoe
+No
+
+
+[09/04/2023 05:48] anmol.eth
+So how does this work?  Why BURNER is able to take other's funds?  This may be a silly question but BURNER is a trusted role as mentioned. So just want to get clarity on under what circumstances the burner will call this burn function and take the  user funds? Please clarify what I'm missing in this.
+
+
+[09/04/2023 05:48] b353n
+Yes owner can burn and get USDY of any user
+
+
+[09/04/2023 05:48] b353n
+```
+function burn(address _account, uint256 _amount) external onlyRole(BURNER_ROLE) {
+        uint256 sharesAmount = getSharesByRUSDY(_amount);
+
+        _burnShares(_account, sharesAmount);
+
+        usdy.transfer(msg.sender, sharesAmount / BPS_DENOMINATOR);
+
+        emit TokensBurnt(_account, _amount);
+    }
+```
+
+
+[09/04/2023 05:49] anmol.eth
+is this is desired?
+
+
+[09/04/2023 05:49] b353n
+owner is trusted , so i think yes
+
+
+[09/04/2023 05:49] anmol.eth
+Doesn't make sense why this is necessary.
+
+
+[09/04/2023 05:50] b353n
+i think this is design of protocol .. its strange but as i read the owner aka BURNER_ROLE is trusted
+
+
+[09/04/2023 05:51] b353n
+because 
+```
+_grantRole(DEFAULT_ADMIN_ROLE, guardian);
+        _grantRole(USDY_MANAGER_ROLE, guardian);
+        _grantRole(PAUSER_ROLE, guardian);
+        _grantRole(MINTER_ROLE, guardian);
+        _grantRole(BURNER_ROLE, guardian);
+        _grantRole(LIST_CONFIGURER_ROLE, guardian);
+```
+
+
+[09/04/2023 05:51] anmol.eth
+Yeah right cannot do anything if role is trusted 🤦
+
+
+[09/04/2023 05:53] b353n
+but is strange design i'm agree
+
+
+[09/04/2023 05:55] anmol.eth
+Yeah i'm still not sure why this is needed
+
+
+[09/04/2023 05:55] b353n
+i think its withdraw because if is not withdraw and admin burn somebody rUSDY , him USDY will be stuck in contract forever
+
+
+[09/04/2023 05:56] b353n
+again its strange because owner also have ability to burn USDY from any account and he can burn it from there but its protocol design i really don't know what is idea behind that
+
+
+[09/04/2023 05:58] anmol.eth
+Absolutely. maybe @tom2o17 🌊 can throw some insights on this.
+
+{Reactions}
+✅ 
+
+[09/04/2023 06:17] benrai
+@tom2o17 🌊  dmed you
+
+
+[09/04/2023 06:18] kaveyjoe
+The BURNER role is a special role that allows the holder to burn tokens from any account. This is useful for a variety of purposes, such as:
+
+-Removing tokens from circulation to reduce inflation.
+-Destroying tokens that have been compromised or stolen.
+-Implementing a burn mechanism as part of a tokenomics plan.
+The BURNER role is only available to trusted parties, such as the project developers or a community-elected body. This helps to ensure that the ability to burn tokens is not abused.
+
+
+[09/04/2023 06:22] anmol.eth
+Got it. My  only concern is why the USDY token is transferred to msg.sender instead of account from which the rUSDY shares were burned.
+
+{Reactions}
+🤔 
+
+[09/04/2023 12:05] 0xnirlin
+What exactly is rpow doing in dynamic oracle
+
+
+[09/04/2023 12:06] 0xnirlin
+```
+ roundUpTo8(
+        _rmul(
+          _rpow(currentRange.dailyInterestRate, elapsedDays + 1, ONE),
+          currentRange.prevRangeClosePrice
+        )
+      );
+```
+
+Actually this snippet overall not making enough sense
+
+
+[09/04/2023 12:27] 0xsl1
+i believe it is referring to this: `currentPrice = (Range.dailyInterestRate ** (Days Elapsed + 1)) * Range.lastSetPrice`
+
+
+[09/04/2023 12:49] 0xkazimm
+what is `RWA token ` ?
+
+
+[09/04/2023 12:53] .mangyvagrant
+maybe real world assets token?
+
+{Reactions}
+🙏🏻 (2) 10_10 
+
+[09/04/2023 12:53] 0xkazimm
+thanks ser
+
+
+[09/04/2023 12:54] .mangyvagrant
+np, gl on the hunt 🙂
+
+{Reactions}
+🫡 
+
+[09/04/2023 13:19] 0xkazimm
+and for what reason we use this line `  uint256 public constant BPS_DENOMINATOR = 10_000;` BPS term is bit confused to me, any explaination is appreciated 🙂
+
+
+[09/04/2023 13:21] mert_eren#2527
+probably they want to increase precision
+
+{Reactions}
+10_10 
+
+[09/04/2023 13:22] 0xkazimm
+so 1e18 becomes 1e28 !!
+
+
+[09/04/2023 13:23] mert_eren#2527
+2^256>10^75
+
+
+[09/04/2023 13:28] 0xsl1
+i am not sure on why it is used, but basis points translate to percents, so 10000 bps is 100%
+
+{Reactions}
+👍🏻 
+
+[09/04/2023 13:45] anmol.eth
+Maybe sponsors can show lights on this if they have something to say.
+
+
+[09/04/2023 14:00] 0xhelium
+Bro delete all this . You may dm the team for this
+
+
+[09/04/2023 14:01] anmol.eth
+Why is that mate?
+
+
+[09/04/2023 14:01] 0xhelium
+First because it's a competition, and although it's not valid finding in this one
+
+
+[09/04/2023 14:02] 0xhelium
+You will give free unique high findings to other warden some day
+
+
+[09/04/2023 14:03] anmol.eth
+🫣 i only asked this because burner is a trusted role. Or else does not had a intention to gibe alpha
+
+
+[09/04/2023 14:04] 0xhelium
+I do not blame you for asking
+
+
+[09/04/2023 14:04] 0xhelium
+What i says is that
+
+
+[09/04/2023 14:04] 0xhelium
+One day by asking in public like that your findings won't be unique anymore
+
+
+[09/04/2023 14:04] 0xhelium
+Copy that ?
+
+
+[09/04/2023 14:04] anmol.eth
+True
+
+
+[09/04/2023 14:05] anmol.eth
+But let it be now. Gonna take care next time
+
+
+[09/04/2023 14:05] 0xhelium
+Ok
+
+{Reactions}
+🫡 
+
+[09/04/2023 14:25] tom2o17
+This is an admin burn function it exists to seize rUSDY if the user is not legally allowed to own it. Ideally on a happy path this role will never be needed
+
+
+[09/04/2023 14:27] tom2o17
+This function is to be used in cases in which a user has USDY but is legally not allowed to own it you can think about it similar to the blacklist function on USDC
+
+
+[09/04/2023 14:28] tom2o17
+It is the formula with which the price of USDY is calculated.
+
+
+[09/04/2023 14:29] tom2o17
+It’s intentional 🤫
+
+
+[09/04/2023 14:43] 0xkazimm
+where can i found the axelar gatway and gas contract please ?
+
+
+[09/04/2023 15:06] tom2o17
+The addresses on eth mainnet should be initialized w/n their respective test contracts (test cases)
+
+{Reactions}
+❤️ 
+
+[09/04/2023 15:09] tom2o17
+You can also view the source code for these contracts by going to etherscan and replacing the .io portion of the url with .deth.net
+
+
+[09/04/2023 15:10] tom2o17
+Should bring up a code view of the code deployed @ that address
+
+
+[09/04/2023 15:12] tom2o17
+Also because a fair amount of people have asked about the round function. The 8 here in the rounding function actually refers to the non evm representation of the number so if we are rounding 1 to the 8th decimal place and 1 is represented as 1e18 -> 18-8 = 10
+
+
+[09/04/2023 17:35] saint6704
+should be .deth.net
+
+{Reactions}
+🙃 (2) 
+
+[09/04/2023 18:08] 0xstalin
+so, the goal of the burn() is to seize USDY from accounts, and as a consequence rUSDY needs to be burnt, right?
+
+{Reactions}
+10_10 
+
+[09/04/2023 19:15] tom2o17
+Auto correct 🙄
+
+
+[09/04/2023 19:49] sp1cymeatball
+I still don't get it tho, what's the purpose of this func? For example if value is 1e18, the result will be 1e18 (1e18mod(1e10) = 0, 1e18 - 0 = 1e18)
+
+{Reactions}
+10_10 
+
+[09/04/2023 19:55] tom2o17
+Yup bc we only want to round (for Eg) 100.123456789 to 100.12345678
+
+
+[09/04/2023 19:55] tom2o17
+Represented on a 1e18 scale ^^
+
+{Reactions}
+thankyou (2) 
+
+[09/05/2023 06:48] saint6704
+What's attaching a threshold means ?
+
+
+[09/05/2023 06:48] saint6704
+@tom2o17 🌊
+
+
+[09/05/2023 09:26] saint6704
+who is an approver @tom2o17 🌊
+
+
+[09/05/2023 09:26] benrai
+It checkes how high the amount is that should be minted. Different amounts have different number of approvals they need to be executed. E.g. if you send < 100 tokens you need 1 approval and if you send >= 100 tokens you need 2 aprovals. the function `_attachThreshold` just checks how many approvals the transaction needs based on the amount to be minted and `attaches` this number to the `txnToThresholdSet` mapping
+
+{Reactions}
+10_10 
+
+[09/05/2023 09:53] 7a4raf
+does making a transfer alter the value of the coin?
+if multiple transfers happen in the same time, can this alter the value or affect the currency by any means ?
+
+
+[09/05/2023 11:06] tom2o17
+You can assume that ondo is the approver
+
+
+[09/05/2023 12:35] j4x_98
+So would any vulnerability related to a malicious approver also fall out of the scope due to the mentioned "Malicous Admin/Operator"?
+
+
+[09/05/2023 13:31] tom2o17
+It depends on the vulnerability, we will take all criteria into consideration. 
+I strongly encourage you to document it even if it could potentially be out of scope.
+That comment is just there to avoid, POC's like Owner can set range/threshold incorrectly. 
+(Because yes admin can do that, but they can also upgrade the proxy as well and brick the protocol)
+We generally want you to assume that all whitelisted operators have knowledge of the protocol and wont just be calling setter function with dumb values.
+
+{Reactions}
+👍🏻 
+
+[09/05/2023 13:38] j4x_98
+Great, thank you very much for the answer!
+
+
+[09/05/2023 13:48] 0xkazimm
+did `simulateRange` function used to know usdy price in specific range (simulate a specefic time )?!
+
+
+[09/05/2023 14:36] tom2o17
+So we added that function to fuzz the range we are about to set prior to setting it.
+It will be called in an off chain context so we are not super interested in gas optimizations.
+Basically exists to ensure the values we are about to set result in prices that are consistent w/ our backend
+
+{Reactions}
+👍🏻 
+
+[09/05/2023 15:04] 7a4raf
+Started a thread.
+
+
+[09/05/2023 15:05] mert_eren#2527
+hey @tom2o17 🌊  is approver of destinationContract trusted people or bots. And what are the criterias for approving transaction.
+
+
+[09/05/2023 15:10] tom2o17
+It will be trusted people at first but eventually we will move to bots.
+
+
+[09/05/2023 15:16] tom2o17
+Yeah they can have 1 wei of USDY
+
+{Reactions}
+👍 
+
+[09/06/2023 10:40] klau5_
+Are rUSDY tokens just rebase USDY, and do they not earn any additional interest by being converted to rUSDY?
+What is the purpose(usage) of rUSDY?
+
+
+[09/06/2023 12:31] sobieski_adam
+No additional interest as far as I can tell. The sole purpose is to have a stable token which is always worth 1$, while USDY price is varying (ascending in time)
+
+{Reactions}
+👍🏾 💯 
+
+[09/06/2023 12:41] klau5_
+Thank you for the answer!
+
+{Reactions}
+👍 
+
+[09/06/2023 15:49] 0xnirlin
+what is the trueStart
+
+```
+      uint256 trueStart = (newPrevRangeClosePrice * ONE) / newDailyIR;
+```
+
+
+[09/06/2023 17:16] saint6704
+@tom2o17 🌊  dmd you
+
+
+[09/06/2023 17:19] yash99
+The start price of a range
+
+
+[09/06/2023 17:38] lsaudit
+@tom2o17 🌊  - i've dmd you, please check your DMs in a spare time
+
+
+[09/06/2023 19:16] tom2o17
+srry just getting to these now
+
+
+[09/06/2023 20:35] robel102#0971
+Which chains is ondo deployed on?
+
+
+[09/06/2023 23:00] mahdi9606
+In what situation an approver might refuse to approve the TX?
+
+
+[09/06/2023 23:02] mahdi9606
+Is Bridge used to bridge rUSDY ?
+
+
+[09/06/2023 23:18] 0xstalin
+Only USDY
+
+{Reactions}
+10_10 (2) 
+
+[09/06/2023 23:51] tom2o17
+Reorg /  Axelar dst gateway state not reconcilable w/ head of src chain
+
+{Reactions}
+👍 
+
+[09/06/2023 23:52] mahdi9606
+So why there isn't burnFrom function in USDY
+
+
+[09/06/2023 23:53] mahdi9606
+It's used before bridging
+
+
+[09/06/2023 23:57] tom2o17
+?
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/IMG_6639-0138C.png
+
+{Reactions}
+👍 
+
+[09/06/2023 23:58] tom2o17
+Cmd + f “usdy” in the readme follow the hyperlink
+
+
+[09/07/2023 00:02] mahdi9606
+Oh I was looking the contract USDY in repo
+
+
+[09/07/2023 00:04] tom2o17
+It should be down the inheritance path
+
+{Reactions}
+👍 (2) 
+
+[09/07/2023 05:12] 0xnirlin
+what will be the precision of price returned from oracle?
+
+
+[09/07/2023 05:19] tom2o17
+cmd + f "oracle" in the discord search,
+it should be the response to the last message
+
+
+[09/07/2023 05:37] mrosas
+What oracle is this? I usally only noticed chainlink oracle
+
+
+[09/07/2023 05:37] mrosas
+Is this some sort of custom oracle?
+
+
+[09/07/2023 06:12] superman_i4g
+Yes, you can assume that
+
+
+[09/07/2023 08:49] mrosas
+Why not use chainlink oracle?
+
+
+[09/07/2023 09:43] zigtur
+This oracle is custom as it calculates price depending on elapsedDays and an interest rate per day
+
+
+[09/07/2023 11:03] sobieski_adam
+Because there is no need. Chainlink Oracle may be used to obtain the price from the outside markets, while the price of USDY does not depend on external supply/demand but is calculated based on constant formula. The only variable in this formula is the daily interest rate determined by the yield of the bank deposits which the USDY represents. As this variable is not expected to be very volatille, it is enough to set it once per month - and this is exactly what the custom oracle does.
+
+{Reactions}
+🔥 (3) 👍 
+
+[09/07/2023 12:58] cosine_function
+When will new ranges be set? Shortly before, or even at expiration of the current range? Or long before the block.timestamp of the lastRange.end is reached?
+
+
+[09/07/2023 14:05] ladboy233
+does rUSDY support cross-chain?
+
+
+[09/07/2023 14:05] ladboy233
+no?
+
+
+[09/07/2023 14:08] ladboy233
+wait USDY code is not in-scope?
+
+{Reactions}
+👍 (2) 
+
+[09/07/2023 14:40] 0xnirlin
+:10_10:
+
+
+[09/07/2023 14:43] kaveyjoe
+https://docs.ondo.finance/audits
+
+{Embed}
+https://docs.ondo.finance/audits
+Smart Contract Audits | Ondo Finance Docs
+Our smart contracts have successfully completed audits from some of the leading firms in the industry.
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/ondo-wordmark-hero-card-44A2F.png
+
+
+[09/07/2023 14:44] kaveyjoe
+USDY.sol  was periviously Audited so i think they didn't add it on scope
+
+
+[09/07/2023 14:46] ladboy233
+that's strange
+
+
+[09/07/2023 14:46] ladboy233
+ok
+
+
+[09/07/2023 15:42] e3243eric
+What is a reasonable range for the USDY oracle price? Is it still precision 18?
+
+
+[09/07/2023 15:56] e3243eric
+Ah ... I found the answer.
+
+{Reactions}
+10_10 
+
+[09/07/2023 16:01] tofunmi
+One question though, if you can wrap your usdy at anytime and get a rebasing variant, but still has the same value with changing oracle time, why wrap then 🤔🤔
+
+
+[09/07/2023 16:04] tom2o17
+changes the unit of account ^
+
+
+[09/07/2023 16:11] tofunmi
+Ohhh nice, so `rUSDY` can be gotten in other ways like from exchanges or minted from admin, but if you want `rUSDY` that earns yield , you have to wrap usdy, cause I mean there has to be ones that earn yield and ones that dont for it to all make sense
+
+
+[09/07/2023 16:21] tom2o17
+They both earn yield
+
+
+[09/07/2023 16:21] dev0cloo
+@tom2o17 🌊 kindly check Dm
+
+{Reactions}
+10_10 
+
+[09/07/2023 17:13] tom2o17
+Will try to be available until the close for any last minute questions
+
+
+[09/07/2023 17:35] superman_i4g
+Check your DM, Tom
+
+
+[09/07/2023 18:04] 0xumarkhatab
+hI @tom2o17 🌊  CAN WE have the implementation of  contracts using `IRWALike.sol` or the functions implementation of it mint burn and burnfrom
+
+
+[09/07/2023 18:06] saint6704
+Okay I'm closing on ONDO
+
+{Reactions}
+🫡 
+
+[09/07/2023 18:06] saint6704
+All the best everyone
+
+
+[09/07/2023 18:23] tom2o17
+Unsure of the question
+
+
+[09/07/2023 18:25] 0xumarkhatab
+i mean the any token that implements the functions of IRWALike interface , i want to see their typical implementation that the protocol assumes them to be
+
+
+[09/07/2023 18:29] tom2o17
+See `contracts/usdy/USDY.sol`
+
+
+[09/07/2023 18:37] 0xnirlin
+@tom2o17 🌊 dmed
+
+{Reactions}
+10_10 
+
+[09/07/2023 19:08] 0xumarkhatab
+thanks
+
+
+[09/07/2023 19:17] 0xnirlin
+guys quick just 5 submissions away from 500
+
+{Reactions}
+❤️ 
+
+[09/07/2023 19:18] 0xnirlin
+:thisisfine:
+
+
+[09/07/2023 19:24] 0xstalin
+That feeling wondering what did I missed bcs I only found 5 issues 😵‍💫
+
+
+[09/07/2023 19:28] tom2o17
+Looking forward to seeing them!
+
+{Reactions}
+❤️ 
+
+[09/07/2023 19:47] saint6704
+I see @0xladboy | Sparkware and @0xStalin and I wonder if we'll get anything from the pot 😅
+
+
+[09/07/2023 20:00] 0xnirlin
+Dude i submitted 5 too. But had a blast with this one. And two last minute ideas, one of which unvalidated itself when writing report, always happens lol.
+
+
+[09/07/2023 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺wardens The **Ondo Finance** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Keep an eye on #📢announcements for regular updates on how the audit is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping a Contest-Admin if you have questions along the way!
+
+{Reactions}
+👍 (6) 
+
+[09/07/2023 20:02] saint6704
+How many total submissions?
+
+
+[09/07/2023 20:02] saint6704
+Anyone with backstage?
+
+
+[09/07/2023 20:03] sovaslava9
+Repository with findings does not exists yet
+
+
+[09/07/2023 20:03] kodyvim
+519 when submitted last
+
+
+[09/07/2023 20:03] 0xnirlin
+should be less thann 530 or around that
+
+
+[09/07/2023 20:03] sovaslava9
+we should wait 1H?
+
+
+[09/07/2023 20:03] 0xumarkhatab
+damn !
+Mine was like easgerly written the report and at the last , realized it was not a valid one : /
+
+
+[09/07/2023 20:04] 0xnirlin
+Thank you for all the answers and being responsive. Best of luck
+
+{Reactions}
+10_10 
+
+[09/07/2023 20:04] chaduke3730
+missed this one, too busy
+
+
+[09/07/2023 20:04] 0xnirlin
+🫡 heppens
+
+
+[09/07/2023 20:04] saint6704
+@tom2o17 🌊 thanks for the prompt reply and cooperation man
+
+{Reactions}
+10_10 
+
+[09/07/2023 20:04] 0xumarkhatab
+anyone knows how to pass gas when calling a function in foundry
+
+
+[09/07/2023 20:04] saint6704
+Next one is always there
+
+
+[09/07/2023 20:05] chaduke3730
+@0xweb3boythanks. New semester is crazy, too much work
+
+
+[09/07/2023 20:05] 0xnirlin
+btw is centrifuge somehow linked to ondo? logo looks similar
+
+
+[09/07/2023 20:05] saint6704
+You'll get through it 🔥
+
+
+[09/07/2023 20:06] chaduke3730
+👍 @0xweb3boythanks hope so
+
+
+[09/07/2023 20:10] 0xstalin
+What are you studying sir?
+
+
+[09/07/2023 20:10] tofunmi
+so, huuumm, this is the oracle equation, was wondering why it isn't linear as said in the docs🤔, or is my equation wrong , i dont know , can anyone explain
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/Screenshot_2023-09-07_at_9.05.44_PM-2A6F5.png
+
+
+[09/07/2023 20:10] chaduke3730
+@0xStalindatabases
+
+{Reactions}
+🔥 
+
+[09/07/2023 20:13] tofunmi
+whoa, specialisation is crazy , well done
+
+
+[09/07/2023 20:14] chaduke3730
+@Tofunmiyes, just want to specialize in DB and smart contracts for now.
+
+
+[09/07/2023 20:17] tom2o17
+`4 * 5` --is the same as--> `4 x 5`
+
+
+[09/07/2023 20:19] tofunmi
+Should be * not +, yeah
+
+{Reactions}
+🫡 
+
+[09/07/2023 20:20] tofunmi
+Changing it to * still gives a parabolic function though
+
+
+[09/07/2023 20:22] tofunmi
+like so
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/image-6E3FB.png
+
+
+[09/07/2023 20:22] benrai
+542 issues in total
+
+{Reactions}
+👏🏼 (3) 
+
+[09/07/2023 20:51] 0xstalin
+I've just gone through the findings, and easily half of them will most likely be invalid :10_10:
+
+{Reactions}
+✅ (4) 
+
+[09/07/2023 21:07] benrai
+Did you see anything where you thought: why did I not see that?
+
+
+[09/07/2023 21:08] superman_i4g
+Forsho😅
+For me; most of the codes there are straightforward. So 500+ for this submission, smth is up🌚
+
+
+[09/07/2023 21:15] 0xnevi
+Just like any other contest ✅
+
+{Reactions}
+chefskiss 
+
+[09/07/2023 21:49] sovaslava9
+I'll take 3 days to analizy,why I didnt see these issues)
+
+
+[09/07/2023 21:55] 0xnirlin
+you did this one?
+
+
+[09/07/2023 21:55] sovaslava9
+yes
+
+
+[09/07/2023 22:05] 0xstalin
+yeah, about reentrancy and nonces collision, but those look invalid IMHO, I think I didn't see them because they are not an issue, but I do really want to see the result of those reports, I have already copy the issues number and wrote down some comments
+
+
+[09/07/2023 22:06] 0xnirlin
+btw, what if there are multiple issues within one function each requiring their own fix, but some intelligent dude submit all of them as one, how even duplication works in this case/
+
+
+[09/07/2023 22:10] 0xnevi
+Nope 😢
+
+
+[09/07/2023 22:11] 0xstalin
+If the report containing all the issues is valid, the rest of the reports that reports only a portion of all the issues will be marked as partial-X, (partial-50) (partial-75)(partial-25)
+
+
+[09/07/2023 22:13] 0xnirlin
+report is valid, but the thing is issues are different. One in modifier and one in internal function.
+
+
+[09/07/2023 22:14] 0xstalin
+yeah, that's what I mean, if one report is reporting the two issues, the other report that is reporting only one will get a partial finding
+
+
+[09/07/2023 22:15] 0xnirlin
+lol, I am literally raged. Fault of the reporter who thought to submit two separate issues as one report. Why punish others, maybe instead mark the same as dup of two.
+
+
+[09/07/2023 22:17] 0xstalin
+I don;t exactly know how the partial findings are rewarded, but I believe a portion of the reward goes the warden who reported the partial report, and the other portion goes to the wared who reported the full report
+
+
+[09/07/2023 22:17] 0xnirlin
+I reported both as two separate issues 🙂
+
+
+[09/07/2023 22:18] 0xnirlin
+No point in discussing if both get invalidated 😂  😂
+
+
+[09/07/2023 22:18] 0xstalin
+https://tenor.com/view/bored-bore-boring-boring-day-bored-kid-gif-27532765
+
+{Embed}
+https://tenor.com/view/bored-bore-boring-boring-day-bored-kid-gif-27532765
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/bored-bore-2A73A.png
+
+
+[09/07/2023 22:48] chaduke3730
+nice
+
+
+[09/07/2023 22:48] chaduke3730
+@0xStalin
+
+
+[09/07/2023 22:57] bowtiedvirus
+@0xStalin You judging the contest? First code4rena so not sure what roles mean and what the timeline for this whole thing is 🤕
+
+
+[09/08/2023 00:01] 0xstalin
+Nope, I’m not a judge 😅
+
+
+[09/08/2023 03:54] anmol.eth
+Where i can see the findings gor this contest
+
+
+[09/08/2023 04:13] 0xstalin
+you need to have backstage role to access the repo
+
+
+[09/08/2023 04:17] anmol.eth
+How can  I get that role?
+
+
+[09/08/2023 07:44] dev0cloo
+The pre-requisite for backstage is being certified. 
+https://docs.code4rena.com/roles/certified-contributors
+You can read more on the backstage requirements here: https://docs.code4rena.com/roles/certified-contributors/backstage-wardens
+
+{Embed}
+https://docs.code4rena.com/roles/certified-contributors
+Certified contributors
+In order to create opportunities for contributions which rely on establishment of trust, Code4rena allows community members to opt into certifying their identity and entering into a simple agreement.
+
+{Embed}
+https://docs.code4rena.com/roles/certified-contributors/backstage-wardens
++Backstage wardens
+
+
+[09/08/2023 08:41] t1moh
+If judge considers that issues are different, he can split report into 2 issues
+
+
+[09/08/2023 10:01] 0xnirlin
+👀👀
+
+{Reactions}
+👀 (2) 
+
+[09/19/2023 19:21] b353n
+Any news about results?
+
+
+[09/19/2023 23:51] kirk_baird
+Finished pre-sort and sponsor review, I'm judging now. It will still be more than a week until results
+
+{Reactions}
+🫡 (16) 
+
+[09/25/2023 18:29] j4x_98
+Is there any way to see the escalations/ be able to escalate your issue without having the backstage role?
+
+
+[09/25/2023 18:33] kaveyjoe
+No Not possible
+
+
+[09/27/2023 06:16] 0xnirlin
+:thisisfine:
+
+
+[09/27/2023 21:34] superman_i4g
+@PaperParachute | C4 👀
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/its-real-and-its-coming-kate-dibiasky-B6474.mov
+
+
+[09/28/2023 06:13] 0xnirlin
+https://tenor.com/view/dance-monkey-dancing-gif-2722128942172715002
+
+{Embed}
+https://tenor.com/view/dance-monkey-dancing-gif-2722128942172715002
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/dance-monkey-dancing-73408.png
+
+{Reactions}
+😄 
+
+[09/28/2023 07:36] kaveyjoe
+https://tenor.com/view/im-on-my-way-gordon-oliver-pieces-of-her-omw-im-coming-gif-25429685
+
+{Embed}
+https://tenor.com/view/im-on-my-way-gordon-oliver-pieces-of-her-omw-im-coming-gif-25429685
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/im-on-my-way-gordon-oliver-A0882.png
+
+{Reactions}
+🔥 
+
+[09/28/2023 08:01] hunter_w3b
+https://tenor.com/view/im-waiting-daffy-duck-impatient-gif-16985061
+
+{Embed}
+https://tenor.com/view/im-waiting-daffy-duck-impatient-gif-16985061
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/im-waiting-daffy-duck-CDF9B.png
+
+
+[09/28/2023 12:34] 0xpanicerror
+https://tenor.com/view/bean-mr-middle-finger-gif-25557078
+
+{Embed}
+https://tenor.com/view/bean-mr-middle-finger-gif-25557078
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/bean-mr-93626.png
+
+
+[09/28/2023 14:02] 0xnirlin
+@thebrittfactor | C4 send your gif
+
+{Reactions}
+🤣 (2) 
+
+[09/28/2023 14:08] thebrittfactor
+Bahaha! We're close, I promise :hi5:
+
+{Reactions}
+🔥 (4) hi5 (2) 💜 (2) 
+
+[09/28/2023 14:10] 0x11singh99
+https://tenor.com/view/lets-wait-grady-smith-gradywsmith-lets-be-patient-lets-give-it-more-time-gif-13181480325052729732
+
+{Embed}
+https://tenor.com/view/lets-wait-grady-smith-gradywsmith-lets-be-patient-lets-give-it-more-time-gif-13181480325052729732
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/lets-wait-grady-smith-946E8.png
+
+
+[09/28/2023 14:10] 0xnirlin
+Hehe, knew it, cook good
+
+
+[09/28/2023 19:07] 0xnirlin
+:4739_Skeletor: close but far
+
+
+[09/28/2023 19:08] hunter_w3b
+is there  2 nirlin or just the pic is diff? 😐
+
+
+[09/28/2023 19:11] 0xnirlin
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/Spider_Man_meme-54021.jpg
+
+{Reactions}
+10_10 (3) 😂 (3) 
+
+[09/28/2023 19:22] thebrittfactor
+We're waiting for one more confirmation from Post-Judging QA. We hope to be ready tomorrow 🤞 
+
+I chose the word "close", because technically, it doesn't have a time tied to it 😂 😇
+
+
+[09/28/2023 19:23] 0xnirlin
+Pranked bad, down bad
+
+
+[09/28/2023 19:23] thebrittfactor
+https://tenor.com/view/meonly-gif-19710542
+
+{Embed}
+https://tenor.com/view/meonly-gif-19710542
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/meonly-48A42.png
+
+
+[09/28/2023 21:05] nethoxa
+https://tenor.com/view/private-skipper-rico-penguins-of-madagascar-smile-and-wave-gif-15715831
+
+{Embed}
+https://tenor.com/view/private-skipper-rico-penguins-of-madagascar-smile-and-wave-gif-15715831
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/private-skipper-B8224.png
+
+{Reactions}
+👀 (2) 
+
+[09/29/2023 09:56] kaveyjoe
+https://tenor.com/view/waiting-waiting-patiently-waiting-for-you-waiting-on-you-gif-15489516379864441176
+
+{Embed}
+https://tenor.com/view/waiting-waiting-patiently-waiting-for-you-waiting-on-you-gif-15489516379864441176
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/waiting-waiting-patiently-264C9.png
+
+{Reactions}
+😂 (2) 
+
+[09/29/2023 10:26] _paperparachute
+Let's avoid the profanity, as exciting as results may be 😉
+
+{Reactions}
+👀 (3) 
+
+[09/29/2023 10:27] 0xnirlin
+my bad
+
+{Reactions}
+thankyou (2) dance_vibe (2) 
+
+[09/29/2023 11:42] nethoxa
+https://tenor.com/view/waiting-titanic-gif-25999423
+
+{Embed}
+https://tenor.com/view/waiting-titanic-gif-25999423
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/waiting-titanic-8E949.png
+
+
+[09/29/2023 12:08] _paperparachute
+There are issues with Discord blocking people today, and we can't  generate results from our phones. Just to keep you updated!
+
+{Reactions}
+👍 (2) 
+
+[09/29/2023 12:08] nethoxa
+oh, ok
+
+
+[09/29/2023 12:31] 0xnirlin
+It was a cloudflare issue actually, maintainance problem, seems like its back now.
+
+{Reactions}
+🫡 
+
+[09/29/2023 12:39] ladboy233
+I just got blocked by cloudflare
+
+
+[09/29/2023 12:39] ladboy233
+I can use it on my phone？？
+
+
+[09/29/2023 12:39] ladboy233
+strange
+
+
+[09/29/2023 12:40] ladboy233
+anyway
+
+
+[09/29/2023 12:40] _paperparachute
+Yeah I'm still locked out  on PC
+
+
+[09/29/2023 12:40] moneyversed.eth
+same lol. Thought i was the only one
+
+{Reactions}
+🤝 
+
+[09/29/2023 12:40] ladboy233
+looking forward
+
+
+[09/29/2023 13:04] 0x3b
+Same issue. Uninstalled discord and installed it again, and now it is fixed
+
+
+[09/29/2023 13:04] 0x3b
+You can give it a try!
+
+
+[09/29/2023 13:08] 0xnirlin
+Looks like its going up and down, stops working all of sudden than comes back online
+
+{Reactions}
+😂 
+
+[09/29/2023 14:19] hunter_w3b
+https://tenor.com/view/im-waiting-daffy-duck-impatient-gif-16985061
+
+{Embed}
+https://tenor.com/view/im-waiting-daffy-duck-impatient-gif-16985061
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/im-waiting-daffy-duck-CDF9B.png
+
+
+[09/29/2023 15:28] ladboy233
+I think discord work again haha
+
+
+[09/29/2023 15:29] _paperparachute
+Is that a hint?
+
+
+[09/29/2023 15:29] _paperparachute
+We are just waiting on some final confirmations
+
+
+[09/29/2023 15:30] _paperparachute
+Believe me, when we can post, we will
+
+{Reactions}
+🫡 (3) 
+
+[09/29/2023 15:31] ladboy233
+:C4Keycap: :hi5:
+
+
+[09/29/2023 16:17] lsaudit
+any chance the result will become available today? Or we will need to wait for them after the weekend?
+
+{Reactions}
+💯 (2) 
+
+[09/29/2023 17:08] nethoxa
+it was a very direct indirect XD
+
+{Reactions}
+😂 
+
+[09/29/2023 18:28] 0xstalin
+it;s commiiiiiing
+
+
+[09/29/2023 18:28] thebrittfactor
+We are waiting for confirmation that this is ready to move forward. Unfortunately, we'll have to push awards to next week. 
+Sorry to let everyone down for this week!
+
+{Reactions}
+🥲 (4) 🤦🏽‍♂️ (3) 
+
+[09/29/2023 18:28] thebrittfactor
+https://tenor.com/view/the-office-pam-beesly-please-dont-throw-garbage-at-me-garbage-do-not-throw-trash-at-me-gif-22778097
+
+{Embed}
+https://tenor.com/view/the-office-pam-beesly-please-dont-throw-garbage-at-me-garbage-do-not-throw-trash-at-me-gif-22778097
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/the-office-pam-beesly-893FC.png
+
+
+[09/29/2023 18:29] nethoxa
+https://tenor.com/view/thor-ragnarok-mouth-shut-loki-im-not-going-to-cry-not-talking-gif-14339163
+
+{Embed}
+https://tenor.com/view/thor-ragnarok-mouth-shut-loki-im-not-going-to-cry-not-talking-gif-14339163
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/thor-ragnarok-mouth-shut-B2015.png
+
+
+[09/29/2023 18:32] nethoxa
+does that mean there will not be updates this weekend for other contests like Centrifuge?
+
+
+[09/29/2023 18:44] superman_i4g
+There is never an update on weekends so chill out
+
+
+[09/29/2023 18:44] nethoxa
+perfect, thanks buddy
+
+{Reactions}
+👏🏽 
+
+[09/29/2023 18:52] thebrittfactor
+Unfortunately, most C4 staff are not online during the weekends. But maybe we'll able to award more than one on Monday 🤞
+
+{Reactions}
+🎉 thankyou 🙏 (3) 
+
+[09/29/2023 20:15] t1moh
+Somewhen it was on Sunday/Saturday, but as exception
+
+
+[09/29/2023 20:44] nethoxa
+perfect, thanks
+
+
+[10/02/2023 09:02] hunter_w3b
+https://tenor.com/view/nervous-glance-monkey-gif-21621791
+
+{Embed}
+https://tenor.com/view/nervous-glance-monkey-gif-21621791
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/nervous-glance-E8227.png
+
+
+[10/02/2023 09:03] kaveyjoe
+https://tenor.com/view/waiting-still-gif-20331665
+
+{Embed}
+https://tenor.com/view/waiting-still-gif-20331665
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/waiting-still-567AA.png
+
+
+[10/02/2023 09:58] b353n
+https://tenor.com/view/waiting-wait-cd-dojo-gif-25934639
+
+{Embed}
+https://tenor.com/view/waiting-wait-cd-dojo-gif-25934639
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/waiting-wait-cd-dojo-24454.png
+
+
+[10/02/2023 10:08] superman_i4g
+Chill out guys; It's coming today😂
+
+
+[10/02/2023 10:55] _paperparachute
+You have to consider timezones as well with updates. None of the US staff are going to be up at 3am to announce 😄
+
+{Reactions}
+💯 (2) 
+
+[10/02/2023 13:13] 0xnirlin
+Send em all to asia:thisisfine:
+
+
+[10/02/2023 13:27] josephdara
+Tokyo to be precise :4739_Skeletor:
+
+
+[10/02/2023 13:37] _paperparachute
+I'll get to work on re-homing everyone imminently.
+
+{Reactions}
+🤣 (8) 
+
+[10/02/2023 15:54] zabihullahazadzoi
+https://tenor.com/view/me-waiting-for-my-friends-to-get-online-gif-25825491
+
+{Embed}
+https://tenor.com/view/me-waiting-for-my-friends-to-get-online-gif-25825491
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/me-waiting-for-my-friends-to-get-online-3049B.png
+
+
+[10/02/2023 16:19] castle_chain
+Waiting 🫣
+
+
+[10/02/2023 16:26] _paperparachute
+https://tenor.com/view/platypus-gif-23897459
+
+{Embed}
+https://tenor.com/view/platypus-gif-23897459
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/platypus-A835B.png
+
+{Reactions}
+🫡 (3) rpopcorn (2) 
+
+[10/02/2023 16:27] 0xnirlin
+Hehe
+
+
+[10/02/2023 16:39] 0xstalin
+https://tenor.com/view/itscoming-elf-buddytheelf-gif-10397134
+
+{Embed}
+https://tenor.com/view/itscoming-elf-buddytheelf-gif-10397134
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/itscoming-elf-AA964.png
+
+
+[10/02/2023 16:40] petrichor0961
+😅😅😅
+
+
+[10/02/2023 16:40] 0xnirlin
+Seen it already 😂
+
+
+[10/02/2023 16:40] castle_chain
+Yes i did 😂😂😂
+
+
+[10/02/2023 16:40] saq_143
+🤔🤔🤔🤔🤔🤔
+
+
+[10/02/2023 16:41] 0xstalin
+Enough for lambo? 🧐
+
+
+[10/02/2023 16:41] sovaslava9
+https://tenor.com/view/love-languages-hearts-of-happiness-gif-25122173
+
+{Embed}
+https://tenor.com/view/love-languages-hearts-of-happiness-gif-25122173
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/love-languages-937DE.png
+
+
+[10/02/2023 16:41] saq_143
+https://tenor.com/view/dance-moms-stressed-nervous-scared-nervous-wreck-gif-9751974981338736162
+
+{Embed}
+https://tenor.com/view/dance-moms-stressed-nervous-scared-nervous-wreck-gif-9751974981338736162
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/dance-moms-stressed-EF88F.png
+
+
+[10/02/2023 16:41] mahdi9606
+What happened
+
+
+[10/02/2023 16:41] sovaslava9
+https://tenor.com/view/again-do-it-faster-faster-blake-webber-blake-webber-gifs-gif-10840325
+
+{Embed}
+https://tenor.com/view/again-do-it-faster-faster-blake-webber-blake-webber-gifs-gif-10840325
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/again-do-it-faster-59A6F.png
+
+{Reactions}
+😂 (5) 
+
+[10/02/2023 16:41] 0xnirlin
+Will have to multiply it by 100 at least XD
+
+{Reactions}
+🫡 
+
+[10/02/2023 16:42] saq_143
+https://tenor.com/view/nervous-lmao-scared-gif-27096284
+
+{Embed}
+https://tenor.com/view/nervous-lmao-scared-gif-27096284
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/nervous-lmao-2E280.png
+
+
+[10/02/2023 16:43] _paperparachute
+🤑 🎉  Awards for Ondo Finance:
+
+$4,057.52 USDC » @adriro 
+$2,830.60 USDC » @gkrastenov 
+$2,743.01 USDC » @lsaudit 
+$1,758.96 USDC » @nirlin 
+$1,605.86 USDC » @ast3ros 
+$1,598.78 USDC » @0xpiken 
+$1,340.19 USDC » @0xladboy | Sparkware 
+$1,333.11 USDC » @pontifex 
+$1,021.53 USDC » @0xAsen 
+$974.59 USDC » @0xStalin 
+$904.13 USDC » @inspecktor 
+$858.88 USDC » @Arz 
+$778.38 USDC » @BenRai 
+$771.30 USDC » @Delvir0 
+$771.30 USDC » @merlin 
+$352.46 USDC » @Udsen 
+$308.29 USDC » @kaveyjoe 
+$272.76 USDC » @bin2chen 
+$272.76 USDC » @kutu
+$265.68 USDC » @bowtiedvirus 
+$265.68 USDC » @SpicyMeatball 
+$265.68 USDC » @0xDING99YA 
+$265.68 USDC » @pep7siup 
+$262.16 USDC » catellatech
+$196.22 USDC » @DedOhwale (GMT-7) 
+$196.22 USDC » @JayshreeRAM  
+$196.22 USDC » @hunter_w3b 
+$145.70 USDC » @c3phas 
+$132.84 USDC » @seerether 
+$130.92 USDC » @K42 Ψ 
+$116.18 USDC » @castle_chain 
+$112.07 USDC » @naman1778 
+$106.43 USDC » @0xmystery 
+$97.33 USDC » @matrix_0wl 
+$25.93 USDC » @hals 
+$25.93 USDC » @0xsandy 
+$25.93 USDC » @peanuts 
+$25.93 USDC » @Breeje 
+$18.85 USDC » 0xE1D
+$18.85 USDC » @Krace 
+$18.85 USDC » @Bube 
+$18.85 USDC » @mahdikarimi 
+$18.85 USDC » @m4ttm 
+$16.83 USDC » @none 
+$16.83 USDC » @MohammedRizwan 
+$9.75 USDC » @ybansal2403 
+$9.75 USDC » @Eurovickk 
+$9.75 USDC » @Albahaca 
+$9.75 USDC » @0x11singh99 
+$9.75 USDC » @jeffy 
+$9.75 USDC » @0xhex 
+$9.75 USDC » @0xta 
+$9.75 USDC » @SAAJ 
+$9.75 USDC » @SAQ 
+$9.75 USDC » @zabihullahazadzoi 
+$9.75 USDC » @SY_S 
+$9.75 USDC » @petrichor🦖 
+$7.08 USDC » @0xanmol 
+$7.08 USDC » @pipidu83 
+$7.08 USDC » @Stormreckson 
+$7.08 USDC » @0x6980 
+$7.08 USDC » @codegpt 
+$7.08 USDC » @0xpanicError 
+$7.08 USDC » ohm (@0x4ka5h, @0x_kmr_) 
+$7.08 USDC » @SovaSlava 
+$7.08 USDC » @Lalanda 
+$7.08 USDC » @code-cipher 
+$7.08 USDC » @dev0cloo 
+$7.08 USDC » @klau5 
+$7.08 USDC » @Raihan 
+
+🏁 Findings summary
+--------------------------------------—
+High risk findings: 0  
+Med risk findings: 4 unique (27 total)
+Gas reports: 21 total (Best: @c3phas)
+QA reports: 34 total (Best: @adriro)
+Advanced Analysis Reports: 20 total (Best: catellatech)
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.
+
+{Reactions}
+✅ (3) 🙏 (4) 🚀 (3) 🔥 (3) 🫡 (3) 
+
+[10/02/2023 16:44] _paperparachute
+Of course as I got to the 2nd to last @ I pressed enter instead of ctrl enter and sent the whole thing, then after deleting it had destroyed all the formatting I had done.
+
+
+[10/02/2023 16:44] ladboy233
+GGGGG
+
+
+[10/02/2023 16:44] 0xnirlin
+Congrats everyone 🤝
+
+
+[10/02/2023 16:44] ladboy233
+I lost my wallet so I am submitting a help desk request to update the payment address
+
+
+[10/02/2023 16:44] _paperparachute
+https://tenor.com/view/the-penguins-of-madagascar-madagascar-movies-animation-cartoons-gif-16596826
+
+{Embed}
+https://tenor.com/view/the-penguins-of-madagascar-madagascar-movies-animation-cartoons-gif-16596826
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/the-penguins-of-madagascar-madagascar-8262A.png
+
+{Reactions}
+😂 
+
+[10/02/2023 16:44] ladboy233
+hopefully that 1.3K will not go to black hole
+
+
+[10/02/2023 16:45] ladboy233
+because c4 is really good at distributing reward fast, which is good
+
+
+[10/02/2023 16:45] ladboy233
+but yeah
+
+
+[10/02/2023 16:45] ladboy233
+congrats everyone
+
+
+[10/02/2023 16:45] 0xnirlin
+I already did the calculation anyways 😂
+
+
+[10/02/2023 16:45] 0xnirlin
+@PaperParachute | C4 👀
+
+
+[10/02/2023 16:46] _paperparachute
+Wallets are outside of my area of expertise
+
+
+[10/02/2023 16:46] _paperparachute
+My area of expertise is accidentally hitting enter on stuff.
+
+{Reactions}
+😅 (3) 
+
+[10/02/2023 16:46] ladboy233
+yeap will sort that out in other channel sorry
+
+
+[10/02/2023 16:46] _paperparachute
+If you submitted a ticket, someone will get to it ASAP 🙂
+
+
+[10/02/2023 16:46] 0xnirlin
+And typing for eternity 😂
+
+
+[10/02/2023 16:46] 0xnevi
+Congrats to all the wenners!
+
+{Reactions}
+🤩 
+
+[10/02/2023 16:46] ladboy233
+ok
+
+
+[10/02/2023 16:47] saint6704
+@nirlin congrats bro
+
+{Reactions}
+🫡 (3) 
+
+[10/02/2023 16:47] saint6704
+congrats @0xladboy | Sparkware and @0xStalin
+
+{Reactions}
+🫡 (2) 
+
+[10/02/2023 16:47] 0xnirlin
+Thank you 🤝
+
+
+[10/02/2023 16:48] ladboy233
+ty, yeah nothing crazy on this one, GL to other contest
+
+
+[10/02/2023 16:49] sovaslava9
+Could someone explain me, why my issue is dont have enough proof?  https://github.com/code-423n4/2023-09-ondo-findings/issues/420
+
+
+[10/02/2023 16:55] 0xtendency
+congratulations @lsaudit, you are finally up there
+
+{Reactions}
+thankyou 
+
+[10/02/2023 16:58] delvir0
+Huh, I joined this contest? Honestly can't remember
+
+
+[10/02/2023 16:59] 0xbtk
+Wrong place @SovaSlava
+
+
+[10/02/2023 17:07] tom2o17
+Great Job everyone thanks for participating
+
+{Reactions}
+🫡 (7) 
+
+[10/02/2023 17:09] delvir0
+This is giving me a 404, where can I see the submissions?
+
+
+[10/02/2023 17:10] j4x_98
+I think you require backstage access
+
+
+[10/02/2023 17:11] delvir0
+ahhh, thanks
+
+
+[10/02/2023 17:31] superman_i4g
+https://tenor.com/view/deep-sigh-albert-wesker-lance-reddick-resident-evil-inhale-exhale-gif-26399289
+
+{Embed}
+https://tenor.com/view/deep-sigh-albert-wesker-lance-reddick-resident-evil-inhale-exhale-gif-26399289
+Code4rena - ARCHIVE-Q3-2023 - ondo-sep01 [1145752078334042203].txt_Files/deep-sigh-albert-wesker-F11BF.png
+
+
+[10/02/2023 17:39] sovaslava9
+where is the right place?)
+
+
+[10/02/2023 17:41] 0xstalin
+Backstage channel would be the most appropriate
+
+{Reactions}
+👆 (2) 
+
+[10/02/2023 17:48] yesofcourse_
+gg all
+
+
+[10/02/2023 18:11] thetechnofeak
+Man ur tooo good
+
+
+[10/02/2023 18:11] thetechnofeak
+Congrats
+
+
+[10/02/2023 18:15] stormreckson
+I hope @0xladboy | Sparkware fixed his wallet issue already
+
+
+[10/02/2023 18:52] lsaudit
+my first top3, yay!
+
+{Reactions}
+hi5 (6) 
+
+[10/02/2023 18:56] ladboy233
+With swift C4 staff reply
+
+
+[10/02/2023 18:56] ladboy233
+the issue has been fixed before the reward are sent out!
+
+{Reactions}
+chefskiss (4) code4rena (2) 
+
+[10/02/2023 19:14] 0xbtk
+Lucky you 🎉
+
+
+[10/02/2023 20:04] stormreckson
+Awesome 👍
+
+
+[10/09/2023 07:46] drynooo
+Hi, I'd like to know when we'll see a report on this project
+
+
+[10/18/2023 12:10] okolicodes
+@PaperParachute | C4 pls Ser can you please check your DMs 🙏
+
+{Reactions}
+👍 
+
+==============================================================
+Exported 452 message(s)
+==============================================================
